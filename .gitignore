@@ -1,0 +1,6 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Don't commit user-specific configs
+templates/claudeclaw/settings.json.local

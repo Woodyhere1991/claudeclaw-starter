@@ -1,0 +1,69 @@
+{
+  "model": "sonnet",
+  "api": "",
+  "agentic": {
+    "enabled": true,
+    "defaultMode": "implementation",
+    "modes": [
+      {
+        "name": "planning",
+        "model": "opus",
+        "keywords": [
+          "plan", "design", "architect", "strategy", "approach",
+          "research", "investigate", "analyze", "explore", "understand",
+          "think", "consider", "evaluate", "assess", "review",
+          "system design", "trade-off", "decision", "choose", "compare",
+          "brainstorm", "ideate", "concept", "proposal"
+        ],
+        "phrases": [
+          "how to implement", "how should i", "what's the best way to",
+          "should i", "which approach", "help me decide", "help me understand"
+        ]
+      },
+      {
+        "name": "implementation",
+        "model": "sonnet",
+        "keywords": [
+          "implement", "code", "write", "create", "build", "add",
+          "fix", "debug", "refactor", "update", "modify", "change",
+          "deploy", "run", "execute", "install", "configure", "test",
+          "commit", "push", "merge", "release", "generate", "scaffold",
+          "setup", "initialize"
+        ]
+      }
+    ]
+  },
+  "timezone": "{{TIMEZONE}}",
+  "heartbeat": {
+    "enabled": true,
+    "interval": 30,
+    "prompt": "Quick check: anything important to save to memory? Any blockers to flag? If nothing needs attention, reply HEARTBEAT_OK.",
+    "excludeWindows": [
+      {
+        "days": [0, 1, 2, 3, 4, 5, 6],
+        "start": "23:00",
+        "end": "07:00"
+      }
+    ],
+    "forwardToTelegram": false
+  },
+  "telegram": {
+    "token": "{{TELEGRAM_TOKEN}}",
+    "allowedUserIds": [{{TELEGRAM_USER_ID}}]
+  },
+  "discord": {
+    "token": "",
+    "allowedUserIds": [],
+    "listenChannels": []
+  },
+  "security": {
+    "level": "unrestricted",
+    "allowedTools": [],
+    "disallowedTools": []
+  },
+  "web": {
+    "enabled": true,
+    "host": "127.0.0.1",
+    "port": 4632
+  }
+}
