@@ -10,6 +10,7 @@ Turn Claude Code into an autonomous AI partner that learns you, remembers everyt
 - **Background daemon** — Heartbeat checks, Telegram bot for async messaging, scheduled jobs (cron), web dashboard.
 - **Memory system** — Persistent cross-session knowledge. Your Claude knows your preferences, your projects, your style.
 - **Premium UI standards** — Built-in design bible with 10 rules, dark theme palette, Tailwind starter, and a 40-item pre-ship QA checklist.
+- **Memory decay system** — Automated pruning keeps memory lean. Research files archive after 14 days, paused projects after 30 days. Per-file line limits enforced. Nothing is deleted — just moved to long-term storage.
 
 ## Prerequisites
 
@@ -79,6 +80,18 @@ ClaudeClaw will:
 - Get smarter every session
 - Never ask for permission unnecessarily
 - Have opinions and push back when it has a better idea
+
+## Memory Management
+
+ClaudeClaw includes a memory decay system to prevent context bloat:
+
+- **Budget:** 1,500 lines max across all active memory files
+- **Decay:** Research files archive after 14 days, paused projects after 30 days
+- **Per-file limits:** feedback=20, project=50, reference=60, research=80, consciousness=90 lines
+- **Pruning script:** Run `bash scripts/memory-pruner.sh` weekly (or set up as a cron job)
+- **Archive:** Stale files move to `memory/archive/` — retrievable on demand, never deleted
+
+The pruning script auto-detects your memory directory, flags oversized files, and archives stale ones.
 
 ## Customization
 
